@@ -100,14 +100,14 @@
               <div class="chart-stats">
                 <div><p class="lbl">Amplitude</p><strong id="statAmp">0 µV</strong></div>
                 <div><p class="lbl">Fatigue Index</p><strong id="statIdx">0</strong></div>
-                <span class="badge ok" id="chartBadge">Aman</span>
+                <span class="badge ok" id="chartBadge">Safe</span>
               </div>
             </div>
             <canvas id="chart" aria-label="Grafik aktivitas otot 60 detik terakhir" role="img"></canvas>
             <div class="legend">
               <span><i class="sw sw-line"></i>sEMG</span>
-              <span><i class="sw sw-warn"></i>Batas waspada</span>
-              <span><i class="sw sw-bad"></i>Batas bahaya</span>
+              <span><i class="sw sw-warn"></i>Alert Treshold</span>
+              <span><i class="sw sw-bad"></i>Danger Limit</span>
             </div>
           </div>
 
@@ -136,38 +136,38 @@
                 <circle cx="65" cy="65" r="54" class="ring-fg" id="ringFg"/>
               </svg>
               <div class="ring-text">
-                <span class="lbl">Berjalan</span>
+                <span class="lbl">Walking</span>
                 <strong id="timerText">24:10</strong>
               </div>
             </div>
-            <p class="timer-note">Target sesi 45 menit</p>
-            <button class="btn-soft" id="btnPause" type="button">Jeda pemantauan</button>
+            <p class="timer-note">45 Minutes Session Target</p>
+            <button class="btn-soft" id="btnPause" type="button">Monitoring Pause</button>
           </div>
 
-          <h3>Indikator status</h3>
+          <h3>Status Indicator</h3>
           <div class="card status-card">
             <div class="stat-row">
-              <span class="dot ok"></span><span class="stat-name">Aman</span><strong id="cntOk">0</strong>
+              <span class="dot ok"></span><span class="stat-name">Safe</span><strong id="cntOk">0</strong>
               <div class="bar"><i class="ok" id="barOk"></i></div>
             </div>
             <div class="stat-row">
-              <span class="dot warn"></span><span class="stat-name">Waspada</span><strong id="cntWarn">0</strong>
+              <span class="dot warn"></span><span class="stat-name">Alert</span><strong id="cntWarn">0</strong>
               <div class="bar"><i class="warn" id="barWarn"></i></div>
             </div>
             <div class="stat-row">
-              <span class="dot bad"></span><span class="stat-name">Bahaya</span><strong id="cntBad">0</strong>
+              <span class="dot bad"></span><span class="stat-name">Danger</span><strong id="cntBad">0</strong>
               <div class="bar"><i class="bad" id="barBad"></i></div>
             </div>
           </div>
 
           <h3>Kondisi kolam</h3>
           <div class="card pool-card">
-            <p class="lbl">Kolam utama</p>
+            <p class="lbl">Main Column</p>
             <div class="pool-temp">27<sup>°C</sup></div>
-            <p class="pool-state">Suhu air normal</p>
+            <p class="pool-state">Normal Water Temperature</p>
             <ul class="pool-list">
-              <li><span>Hydrophone</span><strong class="t-ok">Tersambung</strong></li>
-              <li><span>Gelang aktif</span><strong id="poolActive">6 perangkat</strong></li>
+              <li><span>Hydrophone</span><strong class="t-ok">Connected</strong></li>
+              <li><span>Activity Tracker</span><strong id="poolActive">6 Devices</strong></li>
             </ul>
             <svg class="waves" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
               <path d="M0 30c25-14 50-14 75 0s50 14 75 0 50-14 75 0 50 14 75 0V60H0z" fill="rgba(58,150,255,.22)"/>
@@ -184,16 +184,16 @@
       <div class="page">
         <header class="page-head">
           <div>
-            <h2>Riwayat pemantauan</h2>
-            <p class="sub">Catatan kejadian otot dari seluruh perenang pada sesi ini.</p>
+            <h2>Monitoring History</h2>
+            <p class="sub">Record of muscle events from all swimmers in this session.</p>
           </div>
-          <button class="btn-primary" id="btnCsv" type="button">Unduh CSV</button>
+          <button class="btn-primary" id="btnCsv" type="button">CSV File</button>
         </header>
 
         <div class="tabs" id="histTabs" role="tablist" aria-label="Filter riwayat">
-          <button class="tab active" data-hfilter="all" type="button">Semua</button>
-          <button class="tab" data-hfilter="warn" type="button">Waspada</button>
-          <button class="tab" data-hfilter="bad" type="button">Bahaya</button>
+          <button class="tab active" data-hfilter="all" type="button">All</button>
+          <button class="tab" data-hfilter="warn" type="button">Beware</button>
+          <button class="tab" data-hfilter="bad" type="button">Danger</button>
           <button class="tab" data-hfilter="ok" type="button">Normal</button>
         </div>
 
@@ -201,11 +201,11 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Waktu</th>
-                <th>Perenang</th>
-                <th>Peristiwa</th>
-                <th>Otot</th>
-                <th>Indeks</th>
+                <th>Time</th>
+                <th>Swimmer</th>
+                <th>Incident</th>
+                <th>Muscle</th>
+                <th>Index</th>
                 <th>Level</th>
               </tr>
             </thead>
