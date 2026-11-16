@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SWIMGUARD - Dashboard Pemantauan</title>
+  <title>Swimguard - Monitoring Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
           <path d="M6 19c3-4 5-4 8 0s5 4 8 0 3-3 4-2" fill="none" stroke="#3a3cff" stroke-width="2.4" stroke-linecap="round"/>
           <circle cx="21" cy="10" r="2.6" fill="#3a3cff"/>
         </svg>
-        <span>SWIMGUARD</span>
+        <span>Swimguard</span>
       </div>
       <div class="profile">
         <div class="profile-avatar">PG</div>
@@ -37,19 +37,19 @@
       </button>
       <button class="nav-item" data-view="riwayat">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        Riwayat
+        History
       </button>
       <button class="nav-item" data-view="pengguna">
         <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.8a3.4 3.4 0 0 1 0 6.4M18 14.8c2 .6 3.1 2.3 3.5 5.2"/></svg>
-        Pengguna
+        Users
       </button>
       <button class="nav-item" data-view="pengaturan">
         <svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg>
-        Pengaturan
+        Settings
       </button>
     </nav>
 
-    <p class="powered">Powered by SWIMGUARD</p>
+    <p class="powered">Swimguard</p>
   </aside>
 
   <!-- ============ KONTEN ============ -->
@@ -220,31 +220,31 @@
       <div class="page">
         <header class="page-head">
           <div>
-            <h2>Pengguna dan manfaat</h2>
-            <p class="sub">Siapa yang memakai SWIMGUARD dan apa yang mereka dapat.</p>
+            <h2>Users and Benefits</h2>
+            <p class="sub">Who uses Swimguard and what they gain.</p>
           </div>
         </header>
 
         <div class="benefit-grid">
           <article class="benefit">
             <div class="b-icon b1"><svg viewBox="0 0 24 24"><path d="M3 17c3-4 5-4 8 0s5 4 8 0"/><circle cx="16" cy="6" r="2.5"/><path d="m8 12 4-3 3 2"/></svg></div>
-            <h3>Perenang</h3>
-            <p>Tahu kondisi otot saat berenang. Getaran di perangkat memberi tanda lebih awal sebelum kram atau kelelahan mengganggu gerakan.</p>
+            <h3>Swimmers</h3>
+            <p>Understanding the condition of your muscles while swimming. Vibrations from the device provide an early warning before cramps or fatigue can interfere with movement.</p>
           </article>
           <article class="benefit">
             <div class="b-icon b2"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div>
-            <h3>Pelatih renang</h3>
-            <p>Melihat grafik aktivitas otot dan riwayat tiap perenang untuk mengatur intensitas latihan, waktu istirahat, dan program berikutnya.</p>
+            <h3>Swim Coaches</h3>
+            <p>View muscle activity charts and the history of each swimmer to adjust train intensity, rest periods, and future programs.</p>
           </article>
           <article class="benefit">
             <div class="b-icon b3"><svg viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2V10a4.5 4.5 0 0 0-9 0v5z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
-            <h3>Pengawas</h3>
-            <p>Menerima alarm akustik dan notifikasi dashboard saat ada perenang berisiko, sehingga bisa bereaksi lebih cepat tanpa mengawasi satu per satu.</p>
+            <h3>Supervisors</h3>
+            <p>Receive audible alarms and dashboard notifications when a swimmer is at risk, allowing for faster response times without needing to monitor each individual separately.</p>
           </article>
           <article class="benefit">
             <div class="b-icon b4"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
-            <h3>Pengelola kolam renang</h3>
-            <p>Memiliki data keselamatan dan riwayat kejadian untuk evaluasi prosedur, pelaporan, dan peningkatan layanan kolam.</p>
+            <h3>Pool Managers</h3>
+            <p>Access safety data and incident history to evaluate procedures, generate reports, and improve pool services.</p>
           </article>
         </div>
       </div>
@@ -255,16 +255,16 @@
       <div class="page">
         <header class="page-head">
           <div>
-            <h2>Pengaturan peringatan</h2>
-            <p class="sub">Atur batas indeks kelelahan dan jalur peringatan ganda.</p>
+            <h2>Alert Settings</h2>
+            <p class="sub">Set fatigue index tresholds and dual alert triggers.</p>
           </div>
         </header>
 
         <div class="settings">
           <div class="setting">
             <div class="setting-info">
-              <strong>Batas waspada</strong>
-              <span>Status berubah ke Waspada saat indeks mencapai nilai ini.</span>
+              <strong>Warning Treshold</strong>
+              <span>Status changes to 'Warning' when the index reaches this value.</span>
             </div>
             <div class="slider">
               <input type="range" id="setWarn" min="30" max="80" value="55">
@@ -274,8 +274,8 @@
 
           <div class="setting">
             <div class="setting-info">
-              <strong>Batas bahaya</strong>
-              <span>Status berubah ke Bahaya saat indeks mencapai nilai ini.</span>
+              <strong>Danger Treshold</strong>
+              <span>Status changes to 'Danger' when the index reaches this value.</span>
             </div>
             <div class="slider">
               <input type="range" id="setDanger" min="50" max="95" value="80">
@@ -285,8 +285,8 @@
 
           <div class="setting">
             <div class="setting-info">
-              <strong>Getaran pada perangkat perenang</strong>
-              <span>Perangkat bergetar saat status naik ke Waspada atau Bahaya.</span>
+              <strong>Vibration on Swimmer's Device</strong>
+              <span>The device vibrates when the status shifts to 'Warning' or 'Danger'.</span>
             </div>
             <label class="switch">
               <input type="checkbox" id="setVib" checked>
@@ -296,8 +296,8 @@
 
           <div class="setting">
             <div class="setting-info">
-              <strong>Alarm akustik ke pengawas</strong>
-              <span>Sinyal dikirim lewat hydrophone ke pengawas kolam.</span>
+              <strong>Acoustic Alarm for Supervisor</strong>
+              <span>A signal is sent via hydrophone to the pool supervisor.</span>
             </div>
             <label class="switch">
               <input type="checkbox" id="setAco" checked>
