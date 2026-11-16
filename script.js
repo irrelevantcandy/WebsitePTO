@@ -40,12 +40,12 @@
   const initials = name => name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
 
   const swimmers = [
-    { name: 'Raka Pratama',    role: 'Atlet junior',     lane: 'Lintasan 1', muscle: 'Betis kanan', f: 62, rate: 1.3, offset: 0 },
-    { name: 'Dewi Lestari',    role: 'Perenang klub',    lane: 'Lintasan 2', muscle: 'Betis kiri',  f: 41, rate: 0.9, offset: 1 },
-    { name: 'Bagas Wirawan',   role: 'Perenang pemula',  lane: 'Lintasan 3', muscle: 'Paha kanan',  f: 33, rate: 0.6, offset: 2 },
-    { name: 'Salsa Nurhaliza', role: 'Atlet junior',     lane: 'Lintasan 4', muscle: 'Bahu kanan',  f: 50, rate: 1.1, offset: 0 },
-    { name: 'Fajar Ramadhan',  role: 'Perenang rekreasi', lane: 'Lintasan 5', muscle: 'Betis kanan', f: 28, rate: 0.5, offset: 3 },
-    { name: 'Intan Permata',   role: 'Perenang klub',    lane: 'Lintasan 6', muscle: 'Paha kiri',   f: 46, rate: 0.8, offset: 1 }
+    { name: 'Meilizia',    role: 'Atlet junior',     lane: 'Lintasan 1', muscle: 'Betis kanan', f: 62, rate: 1.3, offset: 0 },
+    { name: 'Putri',    role: 'Perenang klub',    lane: 'Lintasan 2', muscle: 'Betis kiri',  f: 41, rate: 0.9, offset: 1 },
+    { name: 'Elsya',   role: 'Perenang pemula',  lane: 'Lintasan 3', muscle: 'Paha kanan',  f: 33, rate: 0.6, offset: 2 },
+    { name: 'Shauqie', role: 'Atlet junior',     lane: 'Lintasan 4', muscle: 'Bahu kanan',  f: 50, rate: 1.1, offset: 0 },
+    { name: 'Jason',  role: 'Perenang rekreasi', lane: 'Lintasan 5', muscle: 'Betis kanan', f: 28, rate: 0.5, offset: 3 },
+    { name: 'Raihan',   role: 'Perenang klub',    lane: 'Lintasan 6', muscle: 'Paha kiri',   f: 46, rate: 0.8, offset: 1 }
   ].map((s, i) => {
     s.idx = i;
     s.badTicks = 0;
@@ -66,18 +66,18 @@
     const now = Date.now();
     const m = min => now - min * 60000;
     history = [
-      { ts: m(5),  name: 'Bagas Wirawan',   event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Paha kanan',  idx: 57 },
-      { ts: m(9),  name: 'Dewi Lestari',    event: 'Kembali normal setelah istirahat', level: 'ok',   muscle: 'Betis kiri',  idx: 29 },
-      { ts: m(12), name: 'Dewi Lestari',    event: 'Risiko kram',                     level: 'bad',  muscle: 'Betis kiri',  idx: 82 },
-      { ts: m(17), name: 'Salsa Nurhaliza', event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Bahu kanan',  idx: 56 },
-      { ts: m(22), name: 'Intan Permata',   event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Paha kiri',   idx: 55 },
-      { ts: m(29), name: 'Raka Pratama',    event: 'Kembali normal setelah istirahat', level: 'ok',   muscle: 'Betis kanan', idx: 31 },
-      { ts: m(31), name: 'Raka Pratama',    event: 'Risiko kram',                     level: 'bad',  muscle: 'Betis kanan', idx: 83 }
+      { ts: m(5),  name: 'Shauqie',   event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Paha kanan',  idx: 57 },
+      { ts: m(9),  name: 'Raihan',    event: 'Kembali normal setelah istirahat', level: 'ok',   muscle: 'Betis kiri',  idx: 29 },
+      { ts: m(12), name: 'Jason',    event: 'Risiko kram',                     level: 'bad',  muscle: 'Betis kiri',  idx: 82 },
+      { ts: m(17), name: 'Elsya', event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Bahu kanan',  idx: 56 },
+      { ts: m(22), name: 'Meilizia',   event: 'Mulai kelelahan',                 level: 'warn', muscle: 'Paha kiri',   idx: 55 },
+      { ts: m(29), name: 'Putri',    event: 'Kembali normal setelah istirahat', level: 'ok',   muscle: 'Betis kanan', idx: 31 },
+      { ts: m(31), name: 'Meilizia',    event: 'Risiko kram',                     level: 'bad',  muscle: 'Betis kanan', idx: 83 }
     ];
     notifs = [
       {
         id: ++notifId, ts: m(4), level: 'warn',
-        title: 'Raka Pratama mulai kelelahan',
+        title: 'Shauqie mulai kelelahan',
         desc: 'Indeks kelelahan 62 di betis kanan. Getaran dikirim ke perangkat perenang dan alarm akustik dikirim ke pengawas.',
         isNew: false
       },
