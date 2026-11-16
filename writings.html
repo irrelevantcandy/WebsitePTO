@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SWIMGUARD - Dashboard Pemantauan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="side-top">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="#fff"/>
+          <path d="M6 19c3-4 5-4 8 0s5 4 8 0 3-3 4-2" fill="none" stroke="#3a3cff" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="21" cy="10" r="2.6" fill="#3a3cff"/>
+        </svg>
+        <span>SWIMGUARD</span>
+      </div>
+      <div class="profile">
+        <div class="profile-avatar">PG</div>
+        <p>Hello!</p>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Menu utama">
+      <button class="nav-item active" data-view="dashboard">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item" data-view="riwayat">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Riwayat
+      </button>
+      <button class="nav-item" data-view="pengguna">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.8a3.4 3.4 0 0 1 0 6.4M18 14.8c2 .6 3.1 2.3 3.5 5.2"/></svg>
+        Pengguna
+      </button>
+      <button class="nav-item" data-view="pengaturan">
+        <svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg>
+        Pengaturan
+      </button>
+    </nav>
+
+    <p class="powered">Powered by SWIMGUARD</p>
+  </aside>
+
+  <!-- ============ KONTEN ============ -->
+  <main class="content">
+
+    <!-- ---------- DASHBOARD ---------- -->
+    <section class="view active" id="view-dashboard">
+      <div class="dash">
+
+        <!-- Kolom notifikasi -->
+        <div class="col col-notif">
+          <header class="col-head">
+            <h2>Notifications</h2>
+            <button class="fab" id="btnTest" type="button" aria-label="Simulasikan peringatan" title="Simulasikan peringatan">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </header>
+          <div id="notifList" class="notif-list"></div>
+        </div>
+
+        <!-- Kolom utama -->
+        <div class="col col-main">
+          <header class="col-head main-head">
+            <h2>Muscle Activity Monitor</h2>
+            <div class="head-tools">
+              <label class="search">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input id="search" type="search" placeholder="Cari perenang" aria-label="Cari perenang">
+              </label>
+              <button class="icon-btn" id="btnBell" type="button" aria-label="Notifikasi baru">
+                <svg viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2V10a4.5 4.5 0 0 0-9 0v5z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+                <span class="bell-dot" id="bellDot" hidden>0</span>
+              </button>
+              <time class="today" id="today"></time>
+            </div>
+          </header>
+
+          <!-- Grafik sEMG -->
+          <div class="chart-card">
+            <div class="chart-top">
+              <div>
+                <p class="lbl">sEMG Graph (RMS)</p>
+                <div class="chart-select">
+                  <select id="chartSwimmer" aria-label="Pilih perenang"></select>
+                  <span class="muscle" id="chartMuscle"></span>
+                </div>
+              </div>
+              <div class="chart-stats">
+                <div><p class="lbl">Amplitude</p><strong id="statAmp">0 µV</strong></div>
+                <div><p class="lbl">Fatigue Index</p><strong id="statIdx">0</strong></div>
+                <span class="badge ok" id="chartBadge">Aman</span>
+              </div>
+            </div>
+            <canvas id="chart" aria-label="Grafik aktivitas otot 60 detik terakhir" role="img"></canvas>
+            <div class="legend">
+              <span><i class="sw sw-line"></i>sEMG</span>
+              <span><i class="sw sw-warn"></i>Batas waspada</span>
+              <span><i class="sw sw-bad"></i>Batas bahaya</span>
+            </div>
+          </div>
+
+          <!-- Tab + daftar perenang -->
+          <div class="tabs" role="tablist" aria-label="Filter status">
+            <button class="tab active" role="tab" data-filter="all" type="button">Semua</button>
+            <button class="tab" role="tab" data-filter="alert" type="button">Peringatan</button>
+            <button class="tab" role="tab" data-filter="ok" type="button">Aman</button>
+          </div>
+          <div id="swimmerList" class="rows"></div>
+        </div>
+
+        <!-- Kolom samping -->
+        <div class="col col-side">
+          <h3>Sesi latihan</h3>
+          <div class="card timer-card">
+            <div class="ring">
+              <svg viewBox="0 0 130 130" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#3a3cff"/>
+                    <stop offset="1" stop-color="#2fb4ff"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="65" cy="65" r="54" class="ring-bg"/>
+                <circle cx="65" cy="65" r="54" class="ring-fg" id="ringFg"/>
+              </svg>
+              <div class="ring-text">
+                <span class="lbl">Berjalan</span>
+                <strong id="timerText">24:10</strong>
+              </div>
+            </div>
+            <p class="timer-note">Target sesi 45 menit</p>
+            <button class="btn-soft" id="btnPause" type="button">Jeda pemantauan</button>
+          </div>
+
+          <h3>Indikator status</h3>
+          <div class="card status-card">
+            <div class="stat-row">
+              <span class="dot ok"></span><span class="stat-name">Aman</span><strong id="cntOk">0</strong>
+              <div class="bar"><i class="ok" id="barOk"></i></div>
+            </div>
+            <div class="stat-row">
+              <span class="dot warn"></span><span class="stat-name">Waspada</span><strong id="cntWarn">0</strong>
+              <div class="bar"><i class="warn" id="barWarn"></i></div>
+            </div>
+            <div class="stat-row">
+              <span class="dot bad"></span><span class="stat-name">Bahaya</span><strong id="cntBad">0</strong>
+              <div class="bar"><i class="bad" id="barBad"></i></div>
+            </div>
+          </div>
+
+          <h3>Kondisi kolam</h3>
+          <div class="card pool-card">
+            <p class="lbl">Kolam utama</p>
+            <div class="pool-temp">27<sup>°C</sup></div>
+            <p class="pool-state">Suhu air normal</p>
+            <ul class="pool-list">
+              <li><span>Hydrophone</span><strong class="t-ok">Tersambung</strong></li>
+              <li><span>Gelang aktif</span><strong id="poolActive">6 perangkat</strong></li>
+            </ul>
+            <svg class="waves" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 30c25-14 50-14 75 0s50 14 75 0 50-14 75 0 50 14 75 0V60H0z" fill="rgba(58,150,255,.22)"/>
+              <path d="M0 40c25-12 50-12 75 0s50 12 75 0 50-12 75 0 50 12 75 0V60H0z" fill="rgba(58,60,255,.16)"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- RIWAYAT ---------- -->
+    <section class="view" id="view-riwayat">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h2>Riwayat pemantauan</h2>
+            <p class="sub">Catatan kejadian otot dari seluruh perenang pada sesi ini.</p>
+          </div>
+          <button class="btn-primary" id="btnCsv" type="button">Unduh CSV</button>
+        </header>
+
+        <div class="tabs" id="histTabs" role="tablist" aria-label="Filter riwayat">
+          <button class="tab active" data-hfilter="all" type="button">Semua</button>
+          <button class="tab" data-hfilter="warn" type="button">Waspada</button>
+          <button class="tab" data-hfilter="bad" type="button">Bahaya</button>
+          <button class="tab" data-hfilter="ok" type="button">Normal</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Waktu</th>
+                <th>Perenang</th>
+                <th>Peristiwa</th>
+                <th>Otot</th>
+                <th>Indeks</th>
+                <th>Level</th>
+              </tr>
+            </thead>
+            <tbody id="histBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PENGGUNA ---------- -->
+    <section class="view" id="view-pengguna">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h2>Pengguna dan manfaat</h2>
+            <p class="sub">Siapa yang memakai SWIMGUARD dan apa yang mereka dapat.</p>
+          </div>
+        </header>
+
+        <div class="benefit-grid">
+          <article class="benefit">
+            <div class="b-icon b1"><svg viewBox="0 0 24 24"><path d="M3 17c3-4 5-4 8 0s5 4 8 0"/><circle cx="16" cy="6" r="2.5"/><path d="m8 12 4-3 3 2"/></svg></div>
+            <h3>Perenang</h3>
+            <p>Tahu kondisi otot saat berenang. Getaran di perangkat memberi tanda lebih awal sebelum kram atau kelelahan mengganggu gerakan.</p>
+          </article>
+          <article class="benefit">
+            <div class="b-icon b2"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div>
+            <h3>Pelatih renang</h3>
+            <p>Melihat grafik aktivitas otot dan riwayat tiap perenang untuk mengatur intensitas latihan, waktu istirahat, dan program berikutnya.</p>
+          </article>
+          <article class="benefit">
+            <div class="b-icon b3"><svg viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2V10a4.5 4.5 0 0 0-9 0v5z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
+            <h3>Pengawas</h3>
+            <p>Menerima alarm akustik dan notifikasi dashboard saat ada perenang berisiko, sehingga bisa bereaksi lebih cepat tanpa mengawasi satu per satu.</p>
+          </article>
+          <article class="benefit">
+            <div class="b-icon b4"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
+            <h3>Pengelola kolam renang</h3>
+            <p>Memiliki data keselamatan dan riwayat kejadian untuk evaluasi prosedur, pelaporan, dan peningkatan layanan kolam.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PENGATURAN ---------- -->
+    <section class="view" id="view-pengaturan">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h2>Pengaturan peringatan</h2>
+            <p class="sub">Atur batas indeks kelelahan dan jalur peringatan ganda.</p>
+          </div>
+        </header>
+
+        <div class="settings">
+          <div class="setting">
+            <div class="setting-info">
+              <strong>Batas waspada</strong>
+              <span>Status berubah ke Waspada saat indeks mencapai nilai ini.</span>
+            </div>
+            <div class="slider">
+              <input type="range" id="setWarn" min="30" max="80" value="55">
+              <output id="outWarn">55</output>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-info">
+              <strong>Batas bahaya</strong>
+              <span>Status berubah ke Bahaya saat indeks mencapai nilai ini.</span>
+            </div>
+            <div class="slider">
+              <input type="range" id="setDanger" min="50" max="95" value="80">
+              <output id="outDanger">80</output>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-info">
+              <strong>Getaran pada perangkat perenang</strong>
+              <span>Perangkat bergetar saat status naik ke Waspada atau Bahaya.</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setVib" checked>
+              <span></span>
+            </label>
+          </div>
+
+          <div class="setting">
+            <div class="setting-info">
+              <strong>Alarm akustik ke pengawas</strong>
+              <span>Sinyal dikirim lewat hydrophone ke pengawas kolam.</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setAco" checked>
+              <span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
